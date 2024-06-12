@@ -1,112 +1,173 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/widgets.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MainApp());
 }
 
-class MyApp extends StatelessWidget {
+class MainApp extends StatelessWidget {
+  const MainApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: NewScreenDesign(),
-    );
-  }
-}
-
-class NewScreenDesign extends StatefulWidget {
-  const NewScreenDesign({Key? key}) : super(key: key);
-
-  @override
-  State<NewScreenDesign> createState() => _NewScreenDesignState();
-}
-
-class _NewScreenDesignState extends State<NewScreenDesign> {
-  var productEditingController = TextEditingController();
-  var focusNode = FocusNode();
-  var categoryEditingController = TextEditingController();
-  var categoryFocusNode = FocusNode();
-  var isHidePassword = true;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: false,
-        title: Text(
-          "Discover the best\nProduct!",
-          style: GoogleFonts.roboto(
-            fontWeight: FontWeight.w500,
-            fontSize: 24,
-            color: const Color.fromRGBO(47, 75, 78, 1),
-          ),
-        ),
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: productEditingController,
-              focusNode: focusNode,
-              decoration: InputDecoration(
-                hintText: "Search your product",
-                prefixIcon: Icon(Icons.search),
-                suffixIcon: Icon(Icons.tune),
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black),
-                ),
-              ),
+        home: Scaffold(
+            appBar: AppBar(
+              title: const Text("row and column practice"),
+              centerTitle: true,
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: categoryEditingController,
-              focusNode: categoryFocusNode,
-              obscureText: isHidePassword ? true : false,
-              decoration: InputDecoration(
-                hintText: "Search your category",
-                prefixIcon: Icon(Icons.search),
-                suffixIcon: GestureDetector(
-                  onTap: () {
-                    print("on click");
-                    isHidePassword = !isHidePassword;
-                    setState(() {});
-                  },
-                  child: isHidePassword
-                      ? Icon(Icons.visibility)
-                      : Icon(Icons.visibility_off),
-                ),
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black),
-                ),
-              ),
-            ),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              if (productEditingController.text.toString().isEmpty) {
-                focusNode.requestFocus();
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Enter the product to search')),
-                );
-              }
-              if (categoryEditingController.text.toString().isEmpty) {
-                categoryFocusNode.requestFocus();
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Enter the category to search')),
-                );
-              }
-            },
-            child: Text("Submit"),
-          )
-        ],
-      ),
-    );
+            body: Center(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 100,
+                          height: 100,
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.all(10),
+                          margin: const EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            color: Colors.limeAccent,
+                            border: Border.all(color: Colors.black54, width: 3),
+                          ),
+                          child: const Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [Icon(Icons.alarm), Text("alarm")],
+                          ),
+                        ),
+                        Container(
+                          width: 100,
+                          height: 100,
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.all(10),
+                          margin: const EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 165, 76, 76),
+                            border: Border.all(color: Colors.black54, width: 3),
+                          ),
+                          child: const Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [Icon(Icons.home), Text("Home")],
+                          ),
+                        ),
+                        Container(
+                          width: 100,
+                          height: 100,
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.all(10),
+                          margin: const EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 55, 177, 185),
+                            border: Border.all(color: Colors.black54, width: 3),
+                          ),
+                          child: const Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [Icon(Icons.email), Text("Email")],
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: 100,
+                          height: 100,
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.all(10),
+                          margin: const EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 255, 65, 75),
+                            border: Border.all(color: Colors.black54, width: 3),
+                          ),
+                          child: const Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [Icon(Icons.wallet), Text("Wallet")],
+                          ),
+                        ),
+                        Container(
+                          width: 100,
+                          height: 100,
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.all(10),
+                          margin: const EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 204, 196, 188),
+                            border: Border.all(color: Colors.black54, width: 3),
+                          ),
+                          child: const Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [Icon(Icons.backup), Text("Backup")],
+                          ),
+                        ),
+                        Container(
+                          width: 100,
+                          height: 100,
+                          alignment: Alignment.center,
+                          padding: const EdgeInsets.all(10),
+                          margin: const EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 147, 207, 197),
+                            border: Border.all(color: Colors.black54, width: 3),
+                          ),
+                          child: const Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [Icon(Icons.book), Text("Book")],
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      Container(
+                        width: 100,
+                        height: 100,
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.all(10),
+                        margin: const EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 136, 9, 130),
+                          border: Border.all(color: Colors.black54, width: 3),
+                        ),
+                        child: const Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [Icon(Icons.camera), Text("Camera")],
+                        ),
+                      ),
+                      Container(
+                        width: 100,
+                        height: 100,
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.all(10),
+                        margin: const EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 192, 139, 71),
+                          border: Border.all(color: Colors.black54, width: 3),
+                        ),
+                        child: const Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [Icon(Icons.person), Text("Person")],
+                        ),
+                      ),
+                      Container(
+                        width: 100,
+                        height: 100,
+                        alignment: Alignment.center,
+                        padding: const EdgeInsets.all(10),
+                        margin: const EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 84, 184, 146),
+                          border: Border.all(color: Colors.black54, width: 3),
+                        ),
+                        child: const Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [Icon(Icons.print), Text("Print")],
+                        ),
+                      ),
+                    ]),
+                  ]),
+            )));
   }
 }
